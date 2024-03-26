@@ -65,6 +65,15 @@ public class Database {
                              tax REAL NOT NULL,
                              other REAL NOT NULL
                      );
+                     
+                       CREATE TABLE IF NOT EXISTS income(
+                             date TEXT NOT NULL,
+                             income REAL NOT NULL,
+                             help REAL NOT NULL,
+                             autoentreprise REAL NOT NULL,
+                             passifIncome REAL NOT NULL,
+                             other REAL NOT NULL
+                     );
                    """;
 
         try (Connection connection = Database.connect()) {

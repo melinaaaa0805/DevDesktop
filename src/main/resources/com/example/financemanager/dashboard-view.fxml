@@ -30,6 +30,7 @@
                     </yAxis>
                 </LineChart>
             </HBox>
+
         </VBox>
     </center>
 </BorderPane>
