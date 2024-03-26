@@ -14,7 +14,7 @@
     <center>
         <VBox spacing="10" styleClass="background-pane">
             <HBox alignment="CENTER">
-                <Label styleClass="title-text" text="Tableau récapitulatif des revenus"/>
+                <Label styleClass="title-text" text="Tableau récapitulatif des gains"/>
             </HBox>
             <VBox>
                 <TableView fx:id="incomeTable">

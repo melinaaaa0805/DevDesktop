@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.BarChart;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseButton;
@@ -59,7 +60,6 @@ public class DashboardTest {
             verifyThat(menu.getItems().get(0), MenuItemMatchers.hasText("Tableau de bord"));
             verifyThat(menu.getItems().get(1), MenuItemMatchers.hasText("Dépenses"));
             verifyThat(menu.getItems().get(2), MenuItemMatchers.hasText("Revenus"));
-
         });
     }
 
@@ -71,18 +71,18 @@ public class DashboardTest {
 
         robot.clickOn("Dépenses", Motion.VERTICAL_FIRST, MouseButton.PRIMARY);
 
-        verifyThat(".title-text", hasText("Tableau récapitulatif des dépenses"));
-    }
+        verifyThat(".title-text", hasText("Tableau récapitulatif des frais"));
 
+    }
     @Test
-    public void shouldChangeStageWhenClickOnMenu(FxRobot robot) throws TimeoutException {
+    public void shouldChangeStageWhenClickOnMenuIncome(FxRobot robot) throws TimeoutException {
         robot.clickOn("Navigation");
 
         WaitForAsyncUtils.waitFor(2, TimeUnit.SECONDS, () -> robot.lookup("Revenus").match(NodeQueryUtils.isVisible()).tryQuery().isPresent());
 
         robot.clickOn("Revenus", Motion.VERTICAL_FIRST, MouseButton.PRIMARY);
 
-        verifyThat(".title-text", hasText("Tableau récapitulatif des revenus"));
+        verifyThat(".title-text", hasText("Tableau récapitulatif des gains"));
     }
 
     @Test
@@ -115,8 +115,8 @@ public class DashboardTest {
 
         assertThat(robot.lookup("#lineChart").queryAs(LineChart.class).getTitle(), equalTo("Évolution des dépenses"));
 
-        verifyThat("#barChar", isVisible());
+        verifyThat("#barChart", isVisible());
 
-        assertThat(robot.lookup("#barChar").queryAs(LineChart.class).getTitle(), equalTo("Revenus et Dépenses par mois"));
+        assertThat(robot.lookup("#barChart").queryAs(BarChart.class).getTitle(), equalTo("Depense et revenu par mois"));
     }
 }

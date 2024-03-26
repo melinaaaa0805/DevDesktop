@@ -138,10 +138,10 @@ public class DashboardController {
 
         // Création des séries de données pour le graphique à barres
         XYChart.Series<String, Float> expensesSeries = new XYChart.Series<>();
-        expensesSeries.setName("Dépenses");
+        expensesSeries.setName("Frais");
 
         XYChart.Series<String, Float> incomesSeries = new XYChart.Series<>();
-        incomesSeries.setName("Revenus");
+        incomesSeries.setName("Gain");
 
         // Ajout des données aux séries
         for (Map.Entry<String, Pair<Float, Float>> entry : totalsByMonth.entrySet()) {

@@ -41,6 +41,7 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-core:2.22.1")
     implementation("org.slf4j:slf4j-log4j12:2.0.11")
     implementation("org.slf4j:slf4j-api:2.0.11")
+    implementation 'org.jetbrains:annotations:24.0.0'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
