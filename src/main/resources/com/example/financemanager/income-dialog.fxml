@@ -26,8 +26,8 @@
             <TextField fx:id="passifIncomeField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
 
 
-            <Label text="Autres :" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-            <TextField fx:id="otherField" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+            <Label text="Autres :" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+            <TextField fx:id="otherField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
 
 
             <columnConstraints>
@@ -38,6 +38,6 @@
         </GridPane>
     </content>
 
-    <ButtonType fx:id="createButtonIncome" text="Créer une dépense" buttonData="OK_DONE"/>
+    <ButtonType fx:id="createButtonIncome" text="Créer un revenu" buttonData="OK_DONE"/>
     <ButtonType text="Annuler" buttonData="CANCEL_CLOSE"/>
 </DialogPane>

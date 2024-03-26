@@ -22,7 +22,9 @@ public class Database {
     /**
      * Currently only table needed
      */
-    private static final String requiredTable = "Expense";
+    private static final String requiredTableExpense = "Expense";
+    private static final String requiredTableIncome = "Income";
+
 
     public static boolean isOK() {
         if (!checkDrivers()) return false; //driver errors
@@ -53,9 +55,22 @@ public class Database {
     }
 
     private static boolean createTableIfNotExists() {
-        String createTables =
+        String createTableIncome =
                 """
-                        CREATE TABLE IF NOT EXISTS expense(
+                       CREATE TABLE IF NOT EXISTS income(
+                             date TEXT NOT NULL,
+                             income REAL NOT NULL,
+                             help REAL NOT NULL,
+                             autoentreprise REAL NOT NULL,
+                             passifIncome REAL NOT NULL,
+                             other REAL NOT NULL
+                     );
+                        
+                     
+                   """;
+        String createTableExpense =
+                """
+                          CREATE TABLE IF NOT EXISTS expense(
                              date TEXT NOT NULL,
                              housing REAL NOT NULL,
                              food REAL NOT NULL,
@@ -66,19 +81,16 @@ public class Database {
                              other REAL NOT NULL
                      );
                      
-                       CREATE TABLE IF NOT EXISTS income(
-                             date TEXT NOT NULL,
-                             income REAL NOT NULL,
-                             help REAL NOT NULL,
-                             autoentreprise REAL NOT NULL,
-                             passifIncome REAL NOT NULL,
-                             other REAL NOT NULL
-                     );
-                   """;
+                     
+                        """;
 
         try (Connection connection = Database.connect()) {
-            PreparedStatement statement = connection.prepareStatement(createTables);
-            statement.executeUpdate();
+            PreparedStatement statementIncome = connection.prepareStatement(createTableIncome);
+            PreparedStatement statementExpense = connection.prepareStatement(createTableExpense);
+
+            statementIncome.executeUpdate();
+            statementExpense.executeUpdate();
+
             return true;
         } catch (SQLException exception) {
             log.error("Could not create tables in database", exception);
